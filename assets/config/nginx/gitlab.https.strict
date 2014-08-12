@@ -62,7 +62,7 @@ upstream gitlab {
 
 ## This is a normal HTTP host which redirects all traffic to the HTTPS host.
 server {
-  listen *:80;
+  listen *:{{GITLAB_PORT}};
   ## Replace git.example.com with your FQDN.
   server_name _;
   server_tokens off;
@@ -72,7 +72,7 @@ server {
 }
 
 server {
-  listen 443 ssl spdy;
+  listen {{GITLAB_HTTPS}} ssl spdy;
   ## Replace git.example.com with your FQDN.
   server_name {{YOUR_SERVER_FQDN}};
   server_tokens off;
